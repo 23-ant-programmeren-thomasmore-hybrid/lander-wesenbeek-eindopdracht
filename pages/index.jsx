@@ -23,6 +23,10 @@ export default function Home() {
       </Head>
       <main Style={"width:1900px; height:738px"}>
         <div Style={"width:100%; height:100%"} >
+            <div Style={"position:absolute"}>
+                hey texttttttttttttttttttttttttttttttttttt
+                overlap test
+            </div>
         <Canvas Style={"width:100%; height:100%"}>
             <RenderPickels/>
 
