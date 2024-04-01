@@ -1,7 +1,5 @@
-"use client"
 import Head from 'next/head'
-import { Canvas, useFrame  } from '@react-three/fiber'
-import {useRef, useState} from "react";
+import CanvasPickles from './RenderPickle.tsx'
 
 export default function Home() {
   return (
@@ -13,15 +11,9 @@ export default function Home() {
           <link href="../styles/output.css" rel="stylesheet"/>
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <main Style={"width:1900px; height:738px"}  class="bg-white">
-          <div Style={"width:80%; height:100%; margin: 10%,0"} >
-
-            <Canvas>
-              <RenderPickels/>
-
-              <ambientLight intensity={0.05} />
-              <directionalLight color="#fff9db" position={[0, 1, 1]} />
-            </Canvas>
+        <main class="bg-orange-200">
+          <div >
+              <CanvasPickles/>
             <div className={"overlap"}>
               hey texttttttttttttttttttttttttttttttttttt
               overlap test
@@ -29,25 +21,5 @@ export default function Home() {
           </div>
         </main>
       </>
-  )
-}
-
-function RenderPickels(){
-  const ref = useRef()
-  useFrame((state, delta) => (ref.current.rotation.y += delta * 0.2))
-  const [hovered, hover] = useState(false)
-  const [scale, setScale] = useState(1)
-
-  return (
-      <mesh
-          ref={ref}
-          position={[-1,0,0]}
-          scale={scale}
-          onPointerOver={(event) => (setScale(scale+0.2) , hover(true))}
-          onPointerOut={(event) => hover(false)}>
-
-        <boxGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'}/>
-      </mesh>
   )
 }
