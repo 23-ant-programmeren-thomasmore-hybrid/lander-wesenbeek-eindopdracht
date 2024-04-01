@@ -12,7 +12,7 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <main class="bg-orange-200">
-          <div >
+          <div class="mx-auto">
               <CanvasPickles/>
             <div className={"overlap"}>
               hey texttttttttttttttttttttttttttttttttttt

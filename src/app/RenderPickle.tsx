@@ -16,19 +16,14 @@ export default function CanvasPickles(){
 function RenderPickels(){
     const ref = useRef()
     useFrame((state, delta) => (ref.current.rotation.y += delta * 0.2))
-    const [hovered, hover] = useState(false)
-    const [scale, setScale] = useState(1)
 
     return (
         <mesh
             ref={ref}
-            position={[-1,0,0]}
-            scale={scale}
-            onPointerOver={(event) => (setScale(scale+0.2) , hover(true))}
-            onPointerOut={(event) => hover(false)}>
+            position={[-1,0,0]}>
 
             <boxGeometry args={[1, 1, 1]} />
-            <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'}/>
+            <meshStandardMaterial/>
         </mesh>
     )
 }
