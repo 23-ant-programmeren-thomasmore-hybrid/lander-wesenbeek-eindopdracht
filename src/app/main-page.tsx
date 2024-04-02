@@ -3,9 +3,13 @@ import CanvasPickles from "@/app/RenderPickle";
 export default function MainPage(){
     return (
         <main className="bg-orange-200">
-            <div className="mx-auto">
+            <div className="mx-auto w-3/4">
                 <CanvasPickles/>
-                <div className="grid grid-cols-1 gap-x-12 gap-y-10 grid-cols-4">
+                <div className="grid grid-cols-3 gap-x-16 gap-y-16 grid-cols-4">
+                    <DisplayProduct/>
+                    <DisplayProduct/>
+                    <DisplayProduct/>
+                    <DisplayProduct/>
                     <DisplayProduct/>
                     <DisplayProduct/>
                 </div>
@@ -20,7 +24,7 @@ function DisplayProduct(){
            <div
                className=" w-full overflow-hidden rounded-lg aspect-h-8 aspect-w-7">
                <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg"
-                    className="h-full w-full object-cover object-center group-hover:opacity-75"/>
+                    className="h-max h-full w-full object-cover object-center group-hover:opacity-75"/>
            </div>
            <h3 className="mt-4 text-sm text-gray-700">Earthen Bottle</h3>
            <p className="mt-1 text-lg font-medium text-gray-900">$48</p>
