@@ -14,7 +14,7 @@ export default function MainPage(){
             <div className="mx-auto w-3/4">
                 <CanvasPickles/>
                 {
-                    shoppingCartOpen? <WinkleMand/>:<></>
+                    shoppingCartOpen? <WinkleMand setShoppingCartOpen={setShoppingCartOpen}/>:<></>
                 }
                 <div className="grid grid-cols-3 gap-x-16 gap-y-16 grid-cols-4">
                     <DisplayProduct/>
