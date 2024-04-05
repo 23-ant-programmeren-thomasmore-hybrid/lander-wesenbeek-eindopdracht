@@ -1,14 +1,21 @@
+"use client"
 import CanvasPickles from "@/app/RenderPickle";
 import NavBar from "@/app/navbar";
 import WinkleMand from "@/app/WinkleMand";
+import {useState} from "react";
+import {set} from "yaml/dist/schema/yaml-1.1/set";
 
 export default function MainPage(){
+    const [shoppingCartOpen, setShoppingCartOpen] = useState(false);
+
     return (
         <main className="bg-orange-200">
-            <NavBar/>
+            <NavBar setShoppingCartOpen={setShoppingCartOpen}/>
             <div className="mx-auto w-3/4">
                 <CanvasPickles/>
-
+                {
+                    shoppingCartOpen? <WinkleMand/>:<></>
+                }
                 <div className="grid grid-cols-3 gap-x-16 gap-y-16 grid-cols-4">
                     <DisplayProduct/>
                     <DisplayProduct/>

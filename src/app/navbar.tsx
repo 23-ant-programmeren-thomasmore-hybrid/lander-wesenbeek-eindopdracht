@@ -1,5 +1,9 @@
 
-export default function NavBar(){
+export default function NavBar(props){
+    const {setShoppingCartOpen} = props;
+    function openShoppingCart(){
+        setShoppingCartOpen(true);
+    }
     return(
         <nav className="w-full mx-auto z-10 fixed">
             <div className="grid grid-cols-3 gap-x-16">
@@ -15,7 +19,7 @@ export default function NavBar(){
                     <a className="mx-2 py-2">
                         page 3
                     </a>
-                    <button className="p-2 ml-16 bg-gray-200">
+                    <button className="p-2 ml-16 bg-gray-200" onClick={openShoppingCart}>
                         shopping cart
                     </button>
                 </div>
