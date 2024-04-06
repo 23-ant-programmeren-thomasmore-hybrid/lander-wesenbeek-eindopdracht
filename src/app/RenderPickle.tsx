@@ -16,13 +16,13 @@ export default function CanvasPickles(){
 }
 
 function RenderPickels(){
-    const ref = useRef()
-    useFrame((state, delta) => (ref.current.rotation.y += delta * 0.2))
+    const [currentRotaion,setCurrentRotation] = useState(0);
+    useFrame((state, delta) => (setCurrentRotation(currentRotaion + delta * 0.2)));
 
     return (
         <mesh
-            ref={ref}
-            position={[0,0,0]}>
+            position={[0,0,0]}
+            rotation={[0,currentRotaion,0]}>
 
             <boxGeometry args={[1, 1, 1]} />
             <meshStandardMaterial/>
