@@ -3,7 +3,6 @@ import CanvasPickles from "@/app/RenderPickle";
 import NavBar from "@/app/navbar";
 import WinkleMand from "@/app/WinkleMand";
 import {useState} from "react";
-import {set} from "yaml/dist/schema/yaml-1.1/set";
 
 export default function MainPage(){
     const [shoppingCartOpen, setShoppingCartOpen] = useState(false);

@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import MainPage from './main-page.tsx'
+import MainPage from './main-page'
 
 export default function Home() {
   return (
