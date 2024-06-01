@@ -4,8 +4,30 @@ import NavBar from "@/app/navbar";
 import WinkleMand from "@/app/WinkleMand";
 import {useState} from "react";
 
+import { sql } from '@vercel/postgres';
+import { NextResponse } from 'next/server';
+import Products from "@/app/Products";
+import ProductDetails from "@/app/ProductDetails";
+
+export enum Pages{
+    Products = 1,
+    ProductDetails = 2,
+}
+
 export default function MainPage(){
+    const [page, setPage] = useState();
     const [shoppingCartOpen, setShoppingCartOpen] = useState(false);
+
+    async function makeDatabaseThing(){
+        try {
+            const result =
+                await sql`CREATE TABLE Products (Id int, Name varchar(255), InStock int, Price double, description varchar(1203), pictureName varchar(255));`;
+            return NextResponse.json({ result }, { status: 200 });
+        } catch (error) {
+            return NextResponse.json({ error }, { status: 500 });
+        }
+    }
+
 
     return (
         <main className="bg-orange-200">
@@ -15,29 +37,14 @@ export default function MainPage(){
                 {
                     shoppingCartOpen? <WinkleMand setShoppingCartOpen={setShoppingCartOpen}/>:<></>
                 }
-                <div className="grid grid-cols-3 gap-x-16 gap-y-16 grid-cols-4">
-                    <DisplayProduct/>
-                    <DisplayProduct/>
-                    <DisplayProduct/>
-                    <DisplayProduct/>
-                    <DisplayProduct/>
-                    <DisplayProduct/>
-                </div>
+                {
+                    page == Pages.Products?
+                        <Products setPages={setPage}/>
+                        : page      == Pages.ProductDetails?
+                        <ProductDetails/>:<></>
+                }
+                <Products/>
             </div>
         </main>
     )
-}
-
-function DisplayProduct(){
-   return (
-       <a href="productDetail" className="group bg-gray-300 overflow-hidden rounded-lg">
-           <div
-               className=" w-full overflow-hidden rounded-lg aspect-h-8 aspect-w-7">
-               <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg"
-                    className="h-max h-full w-full object-cover object-center group-hover:opacity-75"/>
-           </div>
-           <h3 className="mt-4 text-sm text-gray-700">Earthen Bottle</h3>
-           <p className="mt-1 text-lg font-medium text-gray-900">$48</p>
-       </a>
-   )
 }

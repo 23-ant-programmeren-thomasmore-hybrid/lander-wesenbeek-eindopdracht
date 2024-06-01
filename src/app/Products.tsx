@@ -1,22 +1,28 @@
 import {Pages} from "@/app/main-page";
+import {useState} from "react";
 
 const getAllProducts = async () =>{
-    const data = await fetch('/api/products',method: "GET");
-    console.log("the data = " + await data.json());
+    const data = await fetch('/api/products', {
+        method: "GET",
+    })//.then((response) => response.json())
+       // .then((data) => {
+       //     for (const product of data){
+
+       //     }
+       // });
     const products = await data.json();
-    return products;
+    console.log("the data = " + products.products.rows[0].description);
+    return products.products.rows;
 }
 
 export default function Products(props){
     const {setPage} = props;
+    const {products} = useState(getAllProducts());
     return(
         <div className="grid grid-cols-3 gap-x-16 gap-y-16 grid-cols-4">
-            <DisplayProduct setPages={setPage}/>
-            <DisplayProduct setPages={setPage}/>
-            <DisplayProduct setPages={setPage}/>
-            <DisplayProduct setPages={setPage}/>
-            <DisplayProduct setPages={setPage}/>
-            <DisplayProduct setPages={setPage}/>
+            {
+                products?.forEach(<DisplayProduct setPages={setPage}/>)
+            }
             <button onClick={getAllProducts}></button>
         </div>
     )

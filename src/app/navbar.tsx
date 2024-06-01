@@ -9,9 +9,9 @@ export default function NavBar(props){
             <div className="grid grid-cols-3 gap-x-16">
                 <div/>
                 <div/>
-                <div className="flex items-stretch m-4 float-right">
-                    <a className="mx-2 py-2">
-                        page 1
+                <div  className="flex items-stretch m-4 float-right">
+                    <a href="" className="mx-2 py-2" >
+                        Main
                     </a>
                     <a className="mx-2 py-2">
                         page 2

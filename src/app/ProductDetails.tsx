@@ -1,9 +1,7 @@
-import NavBar from "@/app/navbar";
 
-export default function Home(){
+export default function ProductDetails(){
     return (
         <>
-            <NavBar setShoppingCartOpen={setShoppingCartOpen}/>
             <div className="mx-auto w-3/4 ">
                 <div className="grid grid-cols-2 gap-x-16 gap-y-16 grid-cols-4">
                     <div
