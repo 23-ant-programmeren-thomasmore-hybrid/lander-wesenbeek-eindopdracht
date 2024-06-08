@@ -1,3 +1,4 @@
+"use server"
 import {Pages} from "@/app/main-page";
 import {useState} from "react";
 
@@ -12,17 +13,17 @@ const getAllProducts = async () =>{
        // });
     const products = await data.json();
     console.log("the data = " + products.products.rows[0].description);
-    return products.products.rows;
+    return products;
 }
 
-export default function Products(props){
+export default async function Products(props){
     const {setPage} = props;
-    const {products} = useState(getAllProducts());
+    const products = getAllProducts();
+    const names = ['James', 'Paul', 'John', 'George', 'Ringo'];
     return(
         <div className="grid grid-cols-3 gap-x-16 gap-y-16 grid-cols-4">
-            {
-                products?.forEach(<DisplayProduct setPages={setPage}/>)
-            }
+
+            {products.then(result => result.map(name => <DisplayProduct setPages={setPage}/>))}
             <button onClick={getAllProducts}></button>
         </div>
     )
