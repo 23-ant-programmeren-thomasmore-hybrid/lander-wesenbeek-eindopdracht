@@ -32,19 +32,20 @@ function RenderPickels(){
     )
 }
 export function RenderPortrait(){
-    const [currentRotaion,setCurrentRotation] = useState(0);
+    const [currentRotaion,setCurrentRotation] = useState(-1.5707);
     useFrame((state, delta) => (frameUpdate(delta)));
 
     function frameUpdate(delta){
-        setCurrentRotation(currentRotaion + delta * 0.2);
+        if(currentRotaion < 1.5707)
+            setCurrentRotation(currentRotaion + delta * 1.5);
     }
 
     const modle = useLoader(FBXLoader, '/modles/Taak_portrait.fbx')
     return (
         <mesh
-            position={[0,0,0]}
+            position={[4,0,0]}
             rotation={[0,currentRotaion,0]}
-            scale={[0.01,0.01,0.01]}>
+            scale={[0.015,0.015,0.015]}>
 
 
             <primitive object={modle} args={[1, 1, 1]} />
