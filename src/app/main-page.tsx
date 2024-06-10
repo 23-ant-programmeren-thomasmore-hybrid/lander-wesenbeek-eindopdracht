@@ -1,5 +1,4 @@
 "use client"
-import CanvasPickles from "@/app/RenderPickle";
 import NavBar from "@/app/navbar";
 import WinkleMand from "@/app/WinkleMand";
 import {useState} from "react";

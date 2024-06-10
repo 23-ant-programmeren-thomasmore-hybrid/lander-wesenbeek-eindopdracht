@@ -1,6 +1,6 @@
 import {Pages} from "@/app/main-page";
 import {Canvas} from "@react-three/fiber";
-import {RenderPortrait} from "@/app/RenderPickle";
+import {RenderCSharp, RenderHTML, RenderPortrait} from "@/app/ModleRenderer";
 export default async function StartPage(props){
     const {setPage} = props;
     return(
@@ -19,6 +19,8 @@ export default async function StartPage(props){
             </div>
             <div className="col">
                 <Canvas>
+                    <ambientLight intensity={0.75} />
+                    <directionalLight color="#fff9db" position={[0, 0, 1]} />
                     <RenderPortrait/>
                 </Canvas>
             </div>
