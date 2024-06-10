@@ -1,6 +1,8 @@
 "use client"
 import {useRef, useState} from "react";
-import { Canvas, useFrame  } from '@react-three/fiber'
+import { Canvas, useFrame, useLoader} from '@react-three/fiber'
+import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'
+
 
 export default function CanvasPickles(){
     return (
@@ -25,6 +27,27 @@ function RenderPickels(){
             rotation={[0,currentRotaion,0]}>
 
             <boxGeometry args={[1, 1, 1]} />
+            <meshStandardMaterial/>
+        </mesh>
+    )
+}
+export function RenderPortrait(){
+    const [currentRotaion,setCurrentRotation] = useState(0);
+    useFrame((state, delta) => (frameUpdate(delta)));
+
+    function frameUpdate(delta){
+        setCurrentRotation(currentRotaion + delta * 0.2);
+    }
+
+    const modle = useLoader(FBXLoader, '/modles/Taak_portrait.fbx')
+    return (
+        <mesh
+            position={[0,0,0]}
+            rotation={[0,currentRotaion,0]}
+            scale={[0.01,0.01,0.01]}>
+
+
+            <primitive object={modle} args={[1, 1, 1]} />
             <meshStandardMaterial/>
         </mesh>
     )

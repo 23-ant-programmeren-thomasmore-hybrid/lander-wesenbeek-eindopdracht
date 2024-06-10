@@ -21,12 +21,7 @@ export default function MainPage(){
 
     return (
         <main className="bg-orange-200">
-            <NavBar setShoppingCartOpen={setShoppingCartOpen}/>
-            <div className="mx-auto w-3/4">
-                <CanvasPickles/>
-                {
-                    shoppingCartOpen? <WinkleMand setShoppingCartOpen={setShoppingCartOpen}/>:<></>
-                }
+            <div >
                 {
                     page == Pages.Start?
                         <StartPage setPages={setPage}/>
