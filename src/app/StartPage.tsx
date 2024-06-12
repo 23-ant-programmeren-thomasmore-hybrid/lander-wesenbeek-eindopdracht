@@ -1,10 +1,7 @@
-import {Pages} from "@/app/main-page";
 import {Canvas} from "@react-three/fiber";
 import {RenderCSharp, RenderHTML, RenderPortrait} from "@/app/ModleRenderer";
-export default async function StartPage(props){
-    const {setPage} = props;
+export default async function StartPage(){
     return(
-
         <div className="mx-auto h-screen grid grid-cols-2 gap-x-8">
             <div className="p-6 lg:p-8">
                 <nav className="p-6 grid grid-cols-3">

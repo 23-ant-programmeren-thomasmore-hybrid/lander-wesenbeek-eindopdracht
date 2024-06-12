@@ -17,8 +17,6 @@ export function RenderPortrait(){
     }
 
     const model = useLoader(GLTFLoader, '/modles/Taak_portrait.glb');
-    //const texture = useTexture('/Textures/Portrait_texture.png');
-    console.log("model + " + model[0]);
     return (
         <mesh
             position={[4,0,0]}
@@ -27,41 +25,54 @@ export function RenderPortrait(){
 
 
             <primitive object={model.scene}/>
-            <meshStandardMaterial />
         </mesh>
     )
 }
 
 export function RenderCSharp(){
-    const colorMap = useTexture('C_Texture.jpg')
-    const model = useLoader(FBXLoader, '/modles/C_Logo.fbx')
-        console.log("texture " +  colorMap.length);
+    const [xRot,setXRot] = useState(0);
+    const [zRot,setZRot] = useState(0);
+    const [time,setTime] = useState(0);
+    useFrame((state, delta) => (frameUpdate(delta)));
+
+    function frameUpdate(delta){
+        setTime(time + delta);
+        setXRot( Math.sin(time) * 0.06);
+        setZRot(Math.cos(time * 1.2) * 0.05);
+    }
+    const model = useLoader(GLTFLoader, '/modles/C_Logo.glb')
     return (
         <mesh
-            position={[0,8,0.5]}
-            rotation={[0,-1.57,0]}
-            scale={[0.015,0.015,0.015]}>
+            position={[4,4.5,0.5]}
+            rotation={[0,-2 + zRot,0]}
+            scale={[0.8,0.8,0.8]}>
 
 
-            <primitive object={model} args={[1, 1, 1]} />
-            <meshStandardMaterial map={colorMap}/>
+            <primitive object={model.scene}/>
         </mesh>
     )
 }
 
 export function RenderHTML(){
-    const model = useLoader(FBXLoader, '/modles/Html_Logo.fbx')
-    const colorMap = useTexture('/textures/Html_Texture.png')
-    console.log("texture " +  colorMap.length);
+    const [xRot,setXRot] = useState(12);
+    const [zRot,setZRot] = useState(0);
+    const [time,setTime] = useState(0);
+    useFrame((state, delta) => (frameUpdate(delta)));
+
+    function frameUpdate(delta){
+        setTime(time + delta);
+        setXRot( Math.sin(time * 0.7) * 0.06);
+        setZRot(Math.cos(time * 0.6) * 0.05);
+    }
+    const model = useLoader(GLTFLoader, '/modles/Html_Logo.glb')
     return (
         <mesh
-            position={[2,8,0.5]}
-            rotation={[0,-1.57,0]}
-            scale={[0.015,0.015,0.015]}>
+            position={[-3,3.5,0.5]}
+            rotation={[0,-1.57 - xRot,zRot * 0.4]}
+            scale={[0.6,0.6,0.6]}>
 
 
-            <primitive object={model} args={[1, 1, 1]} />
-            <meshStandardMaterial map={colorMap}/>
+            <primitive object={model.scene}/>
         </mesh>
     )
 }
