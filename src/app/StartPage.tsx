@@ -1,29 +1,28 @@
 import {Canvas} from "@react-three/fiber";
 import {RenderCSharp, RenderHTML, RenderPortrait} from "@/app/ModleRenderer";
+import NavBar from "@/app/navbar";
 export default async function StartPage(){
     return(
-        <div className="mx-auto h-screen grid grid-cols-2 gap-x-8">
-            <div className="p-6 lg:p-8">
-                <nav className="p-6 grid grid-cols-3">
-                    <a href="experience">Experience</a>
-                    <a href="">Hobby</a>
-                    <a href="">Intrests</a>
-                </nav>
-                <h1 className="my-6">Hello, I'm Lander</h1>
-                <p>
-                    I am a fullstack programmer student. Studying at Thomasmore, Sint Andries.
-                </p>
+        <div>
+            <NavBar/>
+            <div className="mx-auto h-screen grid grid-cols-2 gap-x-8">
+                <div className="p-6 lg:p-8">
+                    <div className="h-10"/>
+                    <h1 className="my-6">Hello, I'm Lander</h1>
+                    <p>
+                        I am a fullstack programmer student. Studying at Thomasmore, Sint Andries.
+                    </p>
+                </div>
+                <div className="col">
+                    <Canvas>
+                        <ambientLight intensity={0.75} />
+                        <directionalLight color="#fff9db" position={[0, 0, 1]} />
+                        <RenderPortrait/>
+                    </Canvas>
+                </div>
+                <test/>
             </div>
-            <div className="col">
-                <Canvas>
-                    <ambientLight intensity={0.75} />
-                    <directionalLight color="#fff9db" position={[0, 0, 1]} />
-                    <RenderPortrait/>
-                </Canvas>
-            </div>
-            <test/>
         </div>
-
     )
 }
 

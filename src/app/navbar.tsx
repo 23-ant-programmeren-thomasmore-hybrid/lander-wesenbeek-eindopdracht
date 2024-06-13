@@ -1,28 +1,13 @@
 
-export default function NavBar(props){
-    const {setShoppingCartOpen} = props;
-    function openShoppingCart(){
-        setShoppingCartOpen(true);
-    }
+export default function NavBar(){
     return(
         <nav className="w-full mx-auto z-10 fixed">
-            <div className="grid grid-cols-3 gap-x-16">
-                <div/>
-                <div/>
-                <div  className="flex items-stretch m-4 float-right">
-                    <a href="" className="mx-2 py-2" >
-                        Main
-                    </a>
-                    <a className="mx-2 py-2">
-                        page 2
-                    </a>
-                    <a className="mx-2 py-2">
-                        page 3
-                    </a>
-                    <button className="p-2 ml-16 bg-gray-200" onClick={openShoppingCart}>
-                        shopping cart
-                    </button>
-                </div>
+            <div className="grid grid-cols-3 gap-x-8">
+                <nav className="grid grid-cols-4">
+                    <a className="bg-stone-50 p-3 border-2 border-solid hover:border-none border-slate-600 text-center" href="/">About me</a>
+                    <a className="bg-stone-50 p-3 border-2 border-solid hover:border-none border-slate-600 text-center" href="experience">Experience</a>
+                    <a className="bg-stone-50 p-3 border-2 border-solid hover:border-none border-slate-600 text-center rounded-br-lg" href="">Hobby</a>
+                </nav>
             </div>
         </nav>
     )
