@@ -9,11 +9,30 @@ import { useTexture } from "@react-three/drei"
 
 export function RenderPortrait(){
     const [currentRotation,setCurrentRotation] = useState(-1.5707);
+    const [pushback, setPushBack] = useState(0);
     useFrame((state, delta) => (frameUpdate(delta)));
 
     function frameUpdate(delta){
-        if(currentRotation < 1.5707)
-            setCurrentRotation(currentRotation + delta * 1.5);
+        const newRot = currentRotation + delta * 1.5 - pushback;
+
+        if(newRot < -1.5707)
+            setCurrentRotation(-1.5707);
+
+        if(newRot < 1.5707)
+            setCurrentRotation(newRot);
+        else
+            setCurrentRotation(1.5707);
+
+        console.log(pushback);
+        if(pushback > 0){
+            setPushBack(pushback - delta * 0.15);
+        }
+        console.log(pushback);
+    }
+
+    function push(){
+        console.log("hqsdfkhjgsdfhjidfzaf");
+        setPushBack(0.07);
     }
 
     const model = useLoader(GLTFLoader, '/modles/Taak_portrait.glb');
@@ -21,7 +40,9 @@ export function RenderPortrait(){
         <mesh
             position={[4,0,0]}
             rotation={[0,currentRotation,0]}
-            scale={[2,2,2]}>
+            scale={[2,2,2]}
+            onPointerOver={push}>
+
 
 
             <primitive object={model.scene}/>
