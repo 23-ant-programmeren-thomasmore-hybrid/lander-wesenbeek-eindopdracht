@@ -21,10 +21,27 @@ body {
   background: linear-gradient(
       to bottom,
       transparent,
+
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
 }
+main{
+  background:#C49E9E
+}
+h1{
+  color: #0D0221
+}
+p{
+  color:#0F084B
+}
+.bg-custom-1{
+  background-color: #D9D9D9;
+}
+.bg-custom-2{
+  background-color: #C2E7D9;
+}
+
 
 @layer utilities {
   .text-balance {

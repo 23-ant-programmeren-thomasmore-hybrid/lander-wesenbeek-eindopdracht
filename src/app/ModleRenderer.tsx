@@ -23,22 +23,19 @@ export function RenderPortrait(){
         else
             setCurrentRotation(1.5707);
 
-        console.log(pushback);
         if(pushback > 0){
             setPushBack(pushback - delta * 0.15);
         }
-        console.log(pushback);
     }
 
     function push(){
-        console.log("hqsdfkhjgsdfhjidfzaf");
         setPushBack(0.07);
     }
 
     const model = useLoader(GLTFLoader, '/modles/Taak_portrait.glb');
     return (
         <mesh
-            position={[4,0,0]}
+            position={[8,0,0]}
             rotation={[0,currentRotation,0]}
             scale={[2,2,2]}
             onPointerOver={push}>
