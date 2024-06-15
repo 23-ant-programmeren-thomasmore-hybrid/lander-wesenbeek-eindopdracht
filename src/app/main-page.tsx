@@ -1,8 +1,9 @@
 "use client"
 import NavBar from "@/app/navbar";
 import {RenderPortrait} from "@/app/ModleRenderer";
-import {Canvas} from "@react-three/fiber";
-import { Text } from '@react-three/drei'
+import {Canvas, useFrame} from "@react-three/fiber";
+import {MyText} from "@/app/MyText";
+
 
 export default function MainPage(){
 
@@ -32,28 +33,3 @@ export default function MainPage(){
         </main>
     )
 }
-
-function MyText(props){
-    const {text, fontSize, position, rotation} = props
-
-    return(
-        <Text color="black" anchorX="left" anchorY="middle" fontSize={fontSize} position={position} rotation={rotation}>
-            {text}
-        </Text>
-    )
-}
-
-// <div className="p-6 lg:p-8">
-//     <div className="h-10"/>
-//     <h1 className="w-60 my-6 p-2 bg-custom-1">Hello, I'm Lander</h1>
-//     <p className="mx-6 p-2 bg-custom-1">
-//         I am a fullstack programmer student. Studying at Thomasmore, Sint Andries. <br/>
-//         <br/>
-//         I like to spend my free time making stuff, like making games, painting, music.<br/>
-//         As well delving into nerdy topics of math behind realtime graphics rendering.<br/>
-//         Where I even made a small game engine in rust.<br/>
-//         <br/>
-//         But life isn't complete when you don't go walking outside in nature.<br/>
-//         Or having a good beer with some friends.<br/>
-//     </p>
-// </div>
