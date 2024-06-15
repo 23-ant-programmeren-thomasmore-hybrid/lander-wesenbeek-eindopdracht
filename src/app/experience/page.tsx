@@ -3,23 +3,25 @@ import {Canvas} from "@react-three/fiber";
 import StartPage from "@/app/StartPage";
 import {RenderCSharp, RenderHTML} from "@/app/ModleRenderer";
 import NavBar from "@/app/navbar";
+import {MyText} from "@/app/MyText";
 export default function MainPage(){
 
     return (
         <main className="w-screen h-screen">
             <NavBar/>
-            <div className="fixed my-20 p-6 z-10">
-                <h1 className={"relative bg-custom-1 p-3"}>My Experiences</h1>
-                <p className={"relative bg-custom-1 p-2.5"} >
-                    I have studied to become a full stack developer in ThomasMore.
-
-                </p>
-            </div>
             <Canvas className="h-max w-max">
                 <ambientLight intensity={1.95} />
                 <directionalLight color="#d9d6c4" position={[0, 0, 1]} />
                 <RenderCSharp/>
                 <RenderHTML/>
+                <MyText fontSize={0.2} position={[-4.5,2,1]} rotation={[0,0,0]}
+                        text={"My Experiences"}/>
+                <MyText fontSize={0.15} position={[-4,1.6,1]} rotation={[0,0,0]}
+                        text={"I have studied to become a full stack developer in ThomasMore."}/>
+                <MyText fontSize={0.15} position={[-4,1.3,1]} rotation={[0,0,0]}
+                        text={"Where I have learned to use many different tools"}/>
+                <MyText fontSize={0.15} position={[-4,1 ,1]} rotation={[0,0,0]}
+                        text={"But I am most familiar with C# and html"}/>
             </Canvas>
 
         </main>
