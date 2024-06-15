@@ -1,7 +1,7 @@
 "use client"
 import NavBar from "@/app/navbar";
 import {RenderPortrait} from "@/app/ModleRenderer";
-import {Canvas, useFrame} from "@react-three/fiber";
+import {Canvas} from "@react-three/fiber";
 import {MyText} from "@/app/MyText";
 
 

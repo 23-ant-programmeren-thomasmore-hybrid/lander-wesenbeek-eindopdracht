@@ -1,6 +1,5 @@
 "use client"
 import {Canvas} from "@react-three/fiber";
-import StartPage from "@/app/StartPage";
 import {RenderCSharp, RenderHTML} from "@/app/ModleRenderer";
 import NavBar from "@/app/navbar";
 import {MyText} from "@/app/MyText";
