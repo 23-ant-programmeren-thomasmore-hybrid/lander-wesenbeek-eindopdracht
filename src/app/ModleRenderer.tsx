@@ -33,7 +33,7 @@ export function RenderPortrait(){
 
     const model = useLoader(GLTFLoader, '/modles/Taak_portrait.glb');
     return (
-        <RenderHangingLogo
+        <mesh
             position={[8,0,0]}
             rotation={[0,currentRotation,0]}
             scale={[2,2,2]}
@@ -42,7 +42,7 @@ export function RenderPortrait(){
 
 
             <primitive object={model.scene}/>
-        </RenderHangingLogo>
+        </mesh>
     )
 }
 
