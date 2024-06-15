@@ -21,6 +21,28 @@ export default function MainPage(){
                         text={"Where I have learned to use many different tools"}/>
                 <MyText fontSize={0.15} position={[-4,1 ,1]} rotation={[0,0,0]}
                         text={"But I am most familiar with C# and html"}/>
+                <MyText fontSize={0.15} position={[-4,0.7 ,1]} rotation={[0,0,0]}
+                        text={"Naturally have I learned many more skills"}/>
+
+                <MyText fontSize={0.15} position={[-1.5,0.3 ,1]} rotation={[0,0,0]} alingX={"center"}
+                        text={"> C#"}/>
+                <MyText fontSize={0.15} position={[-1.5,0 ,1]} rotation={[0,0,0]} alingX={"center"}
+                        text={"> C++"}/>
+                <MyText fontSize={0.15} position={[-1.5,-0.3 ,1]} rotation={[0,0,0]} alingX={"center"}
+                        text={"> rust"}/>
+                <MyText fontSize={0.15} position={[-0.5,0.3 ,1]} rotation={[0,0,0]} alingX={"center"}
+                        text={"> html"}/>
+                <MyText fontSize={0.15} position={[-0.5,0 ,1]} rotation={[0,0,0]} alingX={"center"}
+                        text={"> react"}/>
+                <MyText fontSize={0.15} position={[-0.5,-0.3 ,1]} rotation={[0,0,0]} alingX={"center"}
+                        text={"> javascript"}/>
+
+                <MyText fontSize={0.2} position={[3,-1 ,1]} rotation={[0,0,0]} alingX={"right"}
+                        text={"Languages:"}/>
+                <MyText fontSize={0.15} position={[2.6,-1.4 ,1]} rotation={[0,0,0]} alingX={"right"}
+                        text={"> Dutch"}/>
+                <MyText fontSize={0.15} position={[3.6,-1.4 ,1]} rotation={[0,0,0]} alingX={"right"}
+                        text={"> English"}/>
             </Canvas>
 
         </main>

@@ -3,7 +3,7 @@ import {useFrame} from "@react-three/fiber";
 import { Text } from '@react-three/drei';
 
 export function MyText(props){
-    const {text, fontSize, position, rotation} = props
+    const {text, fontSize, position, rotation,alingX} = props
     useFrame((state, delta) => (frameUpdate(delta)));
     const [realRot, setRealRot] = useState([0,0,0])
     const [mousePos, setMousePos] = useState([0,0])
@@ -31,7 +31,7 @@ export function MyText(props){
     }
 
     return(
-        <Text color="black" anchorX="left" anchorY="top" fontSize={fontSize} position={position} rotation={realRot?realRot:rotation}>
+        <Text color="black" anchorX={alingX?alingX:"left"} anchorY="top" fontSize={fontSize} position={position} rotation={realRot?realRot:rotation}>
             {text}
         </Text>
     )
