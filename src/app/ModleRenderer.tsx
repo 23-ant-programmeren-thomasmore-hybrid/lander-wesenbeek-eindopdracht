@@ -1,7 +1,8 @@
 "use client"
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useFrame, useLoader} from '@react-three/fiber'
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
+import {mod} from "three/examples/jsm/nodes/math/MathNode";
 
 
 
@@ -32,7 +33,7 @@ export function RenderPortrait(){
 
     const model = useLoader(GLTFLoader, '/modles/Taak_portrait.glb');
     return (
-        <mesh
+        <RenderHangingLogo
             position={[8,0,0]}
             rotation={[0,currentRotation,0]}
             scale={[2,2,2]}
@@ -41,51 +42,76 @@ export function RenderPortrait(){
 
 
             <primitive object={model.scene}/>
-        </mesh>
+        </RenderHangingLogo>
     )
 }
 
 export function RenderCSharp(){
-    const [xRot,setXRot] = useState(0);
-    const [zRot,setZRot] = useState(0);
-    const [time,setTime] = useState(0);
-    useFrame((state, delta) => (frameUpdate(delta)));
 
-    function frameUpdate(delta){
-        setTime(time + delta);
-        setXRot( Math.sin(time) * 0.06);
-        setZRot(Math.cos(time * 1.2) * 0.05);
-    }
+
     const model = useLoader(GLTFLoader, '/modles/C_Logo.glb')
     return (
-        <mesh
-            position={[4,4.5,0.5]}
-            rotation={[0,-2 + zRot,0]}
-            scale={[0.8,0.8,0.8]}>
-
-
-            <primitive object={model.scene}/>
-        </mesh>
+        <RenderHangingLogo model={model} position={[4,4.5,0.5]} scale={[0.8,0.8,0.8]}/>
     )
 }
 
 export function RenderHTML(){
-    const [xRot,setXRot] = useState(12);
-    const [zRot,setZRot] = useState(0);
+    const model = useLoader(GLTFLoader, '/modles/Html_Logo.glb')
+    return (
+        <RenderHangingLogo model={model} position={[-3,3.5,0.5]} scale={[0.6,0.6,0.6]}/>
+    )
+}
+
+function RenderHangingLogo(props){
+    const {model, position, scale} = props;
+    const [extraRot,setExtraRot] = useState(0);
+    const [extraRotForce, setExtraRotForce] = useState(0);
+    const [rotForce, setRotForce] = useState(0);
+    const [Rot,setRot] = useState(0);
     const [time,setTime] = useState(0);
+    const [mousePos, setMousePos] = useState([0,0])
+    const [previousMousePos,setPreviousMousePos] = useState([0,0]);
     useFrame((state, delta) => (frameUpdate(delta)));
 
     function frameUpdate(delta){
         setTime(time + delta);
-        setXRot( Math.sin(time * 0.7) * 0.06);
-        setZRot(Math.cos(time * 0.6) * 0.05);
+        setPreviousMousePos(mousePos);
+
+        let newForce = 0
+
+        if(rotForce > 0){
+            newForce += rotForce - delta;
+            if(newForce < 0) {
+                newForce = 0;
+            }
+        }
+        else if(rotForce < 0){
+            newForce += rotForce + delta;
+            if(newForce > 0) {
+                newForce = 0;
+            }
+        }
+        if(extraRotForce !== 0){
+            console.log("extra");
+            newForce = extraRotForce;
+            setExtraRotForce(0);
+        }
+        setRotForce(newForce);
+
+        //console.log("force " + rotForce);
+        setExtraRot(extraRot + rotForce * delta);
+        setRot(Math.cos(time * 1.2) * 0.05 + extraRot);
     }
-    const model = useLoader(GLTFLoader, '/modles/Html_Logo.glb')
-    return (
+    function push(){
+        setExtraRotForce((mousePos[0] - previousMousePos[0]) > 0? 2:-2);
+    }
+
+    return(
         <mesh
-            position={[-3,3.5,0.5]}
-            rotation={[0,-1.57 - xRot,zRot * 0.4]}
-            scale={[0.6,0.6,0.6]}>
+            position={position}
+            rotation={[0,-1.8 + Rot,0]}
+            scale={scale}
+            onPointerOver={push}>
 
 
             <primitive object={model.scene}/>
