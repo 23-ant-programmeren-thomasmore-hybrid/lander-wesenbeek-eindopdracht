@@ -1,9 +1,7 @@
 "use client"
-import {useRef, useState} from "react";
-import { Canvas, useFrame, useLoader} from '@react-three/fiber'
-import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'
+import {useState} from "react";
+import {useFrame, useLoader} from '@react-three/fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { useTexture } from "@react-three/drei"
 
 
 
