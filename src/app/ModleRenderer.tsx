@@ -1,7 +1,7 @@
 "use client"
 import {useState} from "react";
 import {useFrame, useLoader} from '@react-three/fiber'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
 
 
 
