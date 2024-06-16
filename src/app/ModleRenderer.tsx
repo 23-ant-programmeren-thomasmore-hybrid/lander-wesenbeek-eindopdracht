@@ -2,7 +2,6 @@
 import {useEffect, useState} from "react";
 import {useFrame, useLoader} from '@react-three/fiber'
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
-import {mod} from "three/examples/jsm/nodes/math/MathNode";
 
 
 

@@ -3,6 +3,7 @@ import {Canvas} from "@react-three/fiber";
 import {RenderCSharp, RenderHTML} from "@/app/ModleRenderer";
 import NavBar from "@/app/navbar";
 import {MyText} from "@/app/MyText";
+
 export default function MainPage(){
 
     return (

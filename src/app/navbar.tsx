@@ -6,7 +6,7 @@ export default function NavBar(){
                 <nav className=" grid grid-cols-4">
                     <a className="bg-custom-1 p-3 border-2 border-solid hover:border-none border-slate-400 text-center" href="/">About me</a>
                     <a className="bg-custom-1 p-3 border-2 border-solid hover:border-none border-slate-400 text-center" href="experience">Experience</a>
-                    <a className="bg-custom-1 p-3 border-2 border-solid hover:border-none border-slate-400 text-center rounded-br-lg" href="">Hobby</a>
+                    <a className="bg-custom-1 p-3 border-2 border-solid hover:border-none border-slate-400 text-center rounded-br-lg" href="contact">Contact</a>
                 </nav>
             </div>
         </nav>
