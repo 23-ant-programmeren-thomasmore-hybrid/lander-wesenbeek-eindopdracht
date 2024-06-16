@@ -2,6 +2,7 @@
 import NavBar from "@/app/navbar";
 import {Canvas} from "@react-three/fiber";
 import { RoundedBox, Text } from '@react-three/drei';
+import { useRef, useState} from "react";
 
 export default function MainPage(){
 
@@ -22,35 +23,68 @@ export default function MainPage(){
 }
 
 function EmailButton(){
+    const [size,setSize] = useState(1);
+    const [isHovering, setIsHovering] = useState(false);
+    const ref = useRef(this);
+    function hover(){
+        setSize(1.2);
+        setIsHovering(true);
+    }
+    function unHover(){
+        setSize(1);
+        setIsHovering(false);
+    }
+
+    // useEffect(() => {
+    //     const handleClick = event => {
+    //         console.log("hueskdvskugkfveukgehoev + " + size);
+    //             navigator.clipboard.writeText("hi");
+    //     };
+    //     window.addEventListener('click', handleClick);
+//
+    //     return () => {
+    //         window.removeEventListener('click', handleClick);
+    //     };
+    // }, []);
+
     return(
         <RoundedBox
-            args={[3, 1, 1]}
+            args={[3 * size, size, size]}
             radius={0.15} // Radius of the rounded corners. Default is 0.05
             smoothness={4} // The number of curve segments. Default is 4
             bevelSegments={4} // The number of bevel segments. Default is 4, setting it to 0 removes the bevel, as a result the texture is applied to the whole geometry.
             creaseAngle={0.4} // Smooth normals everywhere except faces that meet at an angle greater than the crease angle
             rotation={[0.1,0.4,-0.1]}
             position={[-2.5,2,0]}
+            onPointerEnter={hover}
+            onPointerOut={unHover}
         >
             <meshStandardMaterial color="#29B6F6" />
 
             <RoundedBox
-                args={[2.5, 0.8, 0.8]}
+                args={[2.5 * size, 0.8 * size, 0.8 * size]}
                 radius={0.15}
                 rotation={[0,0,0]}
                 position={[0,0,0.2]}
             >
                 <meshStandardMaterial color="#0288D1" />
             </RoundedBox>
-            <Text position={[0,0,0.8]} fontSize={0.6}>E-mail</Text>
+            <Text position={[0,0,0.8]} fontSize={0.6 * size}>E-mail</Text>
         </RoundedBox>
     )
 }
 
 function LinkedInButton(){
+    const [size,setSize] = useState(1);
+    function hover(){
+        setSize(1.2);
+    }
+    function unHover(){
+        setSize(1);
+    }
     return(
         <RoundedBox
-            args={[3.5, 1, 1]}
+            args={[3.5 * size, size, size]}
             radius={0.15}
             smoothness={4}
             bevelSegments={4}
@@ -58,26 +92,35 @@ function LinkedInButton(){
             rotation={[-0.2,-0.4,0.1]}
             position={[1.9,-1.2,0]}
             onClick={(e) =>  window.location.href = 'https://www.linkedin.com/in/lander-wesenbeek/'}
+            onPointerEnter={hover}
+            onPointerOut={unHover}
         >
             <meshStandardMaterial color="#1E88E5" />
 
             <RoundedBox
-                args={[3, 0.8, 0.8]}
+                args={[3 * size, 0.8 * size, 0.8 * size]}
                 radius={0.15}
                 rotation={[0,0,0]}
                 position={[0,0,0.2]}
             >
                 <meshStandardMaterial color="#F5F5F5" />
             </RoundedBox>
-            <Text position={[0,0,0.8]} fontSize={0.6} color="black" >LinkedIn</Text>
+            <Text position={[0,0,0.8]} fontSize={0.6 * size} color="black" >LinkedIn</Text>
         </RoundedBox>
     )
 }
 
 function ItchIoButton(){
+    const [size,setSize] = useState(1);
+    function hover(){
+        setSize(1.2);
+    }
+    function unHover(){
+        setSize(1);
+    }
     return(
         <RoundedBox
-            args={[3, 1, 1]}
+            args={[3 * size, size, size]}
             radius={0.15}
             smoothness={4}
             bevelSegments={4}
@@ -85,18 +128,28 @@ function ItchIoButton(){
             rotation={[0,0.4,-0.12]}
             position={[-3.6,-1.6,0]}
             onClick={(e) =>  window.location.href = 'https://wandrill.itch.io/'}
+            onPointerEnter={hover}
+            onPointerOut={unHover}
         >
             <meshStandardMaterial color="#FF7575"/>
 
-            <Text position={[0,0,0.8]} fontSize={0.6} >Itch.io</Text>
+            <Text position={[0,0,0.8]} fontSize={0.6 * size} >Itch.io</Text>
         </RoundedBox>
     )
 }
 
 function GitHubButton(){
+    const [size,setSize] = useState(1);
+    function hover(){
+        setSize(1.2);
+    }
+    function unHover(){
+        setSize(1);
+    }
+
     return(
         <RoundedBox
-            args={[2.5, 1, 1]}
+            args={[2.5 * size, size, size]}
             radius={0.15}
             smoothness={4}
             bevelSegments={4}
@@ -104,10 +157,12 @@ function GitHubButton(){
             rotation={[-0.1,-0.4,-0.12]}
             position={[3,2.2,0]}
             onClick={(e) =>  window.location.href = 'https://github.com/AdhesiveBoy'}
+            onPointerEnter={hover}
+            onPointerOut={unHover}
         >
             <meshStandardMaterial color="#222222"/>
 
-            <Text position={[0,0,0.8]} fontSize={0.6} >GitHub</Text>
+            <Text position={[0,0,0.8]} fontSize={0.6 * size} >GitHub</Text>
         </RoundedBox>
     )
 }
