@@ -25,7 +25,7 @@ export default function MainPage(){
 function EmailButton(){
     const [size,setSize] = useState(1);
     const [isHovering, setIsHovering] = useState(false);
-    const ref = useRef(this);
+    const ref = useRef();
     function hover(){
         setSize(1.2);
         setIsHovering(true);
