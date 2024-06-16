@@ -72,7 +72,22 @@ function RenderHangingLogo(props){
     const [mousePos, setMousePos] = useState([0,0])
     const [previousMousePos,setPreviousMousePos] = useState([0,0]);
     useFrame((state, delta) => (frameUpdate(delta)));
+    useEffect(() => {
+        const handleWindowMouseMove = event => {
+            setMousePos([
+                event.clientX,
+                event.clientY,
+            ]);
+        };
+        window.addEventListener('mousemove', handleWindowMouseMove);
 
+        return () => {
+            window.removeEventListener(
+                'mousemove',
+                handleWindowMouseMove,
+            );
+        };
+    }, []);
     function frameUpdate(delta){
         setTime(time + delta);
         setPreviousMousePos(mousePos);
@@ -103,6 +118,7 @@ function RenderHangingLogo(props){
         setRot(Math.cos(time * 1.2) * 0.05 + extraRot);
     }
     function push(){
+        console.log("difrence " + previousMousePos[0]);
         setExtraRotForce((mousePos[0] - previousMousePos[0]) > 0? 2:-2);
     }
 
