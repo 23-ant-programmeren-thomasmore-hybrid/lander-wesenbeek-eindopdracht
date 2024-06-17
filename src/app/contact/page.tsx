@@ -27,11 +27,9 @@ function CameraController(){
     const { camera } = useThree()
     useEffect(() => {
         const handleWindowMouseMove = event => {
-            console.log("hey");
-            console.log("x " + camera.rotation.x);
-            console.log("y " + camera.rotation.y);
-            camera.rotation.y = -(event.clientX/3000 - 0.25);
-            camera.rotation.x = -(event.clientY/1500 - 0.25);
+            const { innerWidth: width, innerHeight: height } = window;
+            camera.rotation.y = -(event.clientX/width - 0.5)/2;
+            camera.rotation.x = -(event.clientY/height - 0.5)/2;
             setMousePos([
                 event.clientX,
                 event.clientY,
@@ -79,7 +77,6 @@ function EmailButton(){
             }
         };
         window.addEventListener('click', handleClick);
-
         return () => {
             window.removeEventListener('click', handleClick);
         };

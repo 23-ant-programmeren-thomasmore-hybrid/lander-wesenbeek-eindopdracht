@@ -106,7 +106,6 @@ function RenderHangingLogo(props){
             }
         }
         if(extraRotForce !== 0){
-            console.log("extra");
             newForce = extraRotForce;
             setExtraRotForce(0);
         }
@@ -117,7 +116,6 @@ function RenderHangingLogo(props){
         setRot(Math.cos(time * 1.2) * 0.05 + extraRot);
     }
     function push(){
-        console.log("difrence " + previousMousePos[0]);
         setExtraRotForce((mousePos[0] - previousMousePos[0]) > 0? 2:-2);
     }
 
