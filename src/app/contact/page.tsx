@@ -85,10 +85,10 @@ function EmailButton(){
     return(
         <RoundedBox
             args={[3 * size, size, size]}
-            radius={0.15} // Radius of the rounded corners. Default is 0.05
-            smoothness={4} // The number of curve segments. Default is 4
-            bevelSegments={4} // The number of bevel segments. Default is 4, setting it to 0 removes the bevel, as a result the texture is applied to the whole geometry.
-            creaseAngle={0.4} // Smooth normals everywhere except faces that meet at an angle greater than the crease angle
+            radius={0.15}
+            smoothness={4}
+            bevelSegments={4}
+            creaseAngle={0.4}
             rotation={[0.1,0.4,-0.1]}
             position={[-2.5,2,0]}
             onPointerEnter={hover}
