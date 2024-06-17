@@ -1,6 +1,6 @@
 "use client"
 import NavBar from "@/app/navbar";
-import {Canvas, useFrame} from "@react-three/fiber";
+import {Canvas, useFrame, useThree} from "@react-three/fiber";
 import { RoundedBox, Text } from '@react-three/drei';
 import { useRef, useState, useEffect} from "react";
 
@@ -12,13 +12,43 @@ export default function MainPage(){
             <Canvas className="h-max w-max">
                 <ambientLight intensity={1.95} />
                 <directionalLight color="#d9d6c4" position={[0, 0, 1]} />
-
+                <CameraController/>
                 <EmailButton/>
                 <LinkedInButton/>
                 <ItchIoButton/>
                 <GitHubButton/>
             </Canvas>
         </main>
+    )
+}
+
+function CameraController(){
+    const [mousePos, setMousePos] = useState([0,0])
+    const { camera } = useThree()
+    useEffect(() => {
+        const handleWindowMouseMove = event => {
+            console.log("hey");
+            console.log("x " + camera.rotation.x);
+            console.log("y " + camera.rotation.y);
+            camera.rotation.y = -(event.clientX/3000 - 0.25);
+            camera.rotation.x = -(event.clientY/1500 - 0.25);
+            setMousePos([
+                event.clientX,
+                event.clientY,
+            ]);
+        };
+        window.addEventListener('mousemove', handleWindowMouseMove);
+
+        return () => {
+            window.removeEventListener(
+                'mousemove',
+                handleWindowMouseMove,
+            );
+        };
+    }, []);
+    return(
+        <>
+        </>
     )
 }
 
