@@ -6,6 +6,8 @@ import {MyText} from "@/app/MyText";
 
 export default async function MainPage(){
 
+
+
     return (
         <main className="w-screen h-screen">
             <NavBar/>

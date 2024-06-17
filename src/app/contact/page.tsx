@@ -1,8 +1,8 @@
 "use client"
 import NavBar from "@/app/navbar";
-import {Canvas} from "@react-three/fiber";
+import {Canvas, useFrame} from "@react-three/fiber";
 import { RoundedBox, Text } from '@react-three/drei';
-import { useRef, useState} from "react";
+import { useRef, useState, useEffect} from "react";
 
 export default function MainPage(){
 
@@ -24,28 +24,36 @@ export default function MainPage(){
 
 function EmailButton(){
     const [size,setSize] = useState(1);
-    const [isHovering, setIsHovering] = useState(false);
-    const ref = useRef();
+    const [copied, setCopied] = useState(0.0);
+    const ref = useRef(false);
+    useFrame((state, delta) => (frameUpdate(delta)));
     function hover(){
         setSize(1.2);
-        setIsHovering(true);
+        ref.current = true;
     }
     function unHover(){
         setSize(1);
-        setIsHovering(false);
+        ref.current = false;
+    }
+    function frameUpdate(delta){
+        if(copied > 0){
+            setCopied(copied - delta);
+        }
     }
 
-    // useEffect(() => {
-    //     const handleClick = event => {
-    //         console.log("hueskdvskugkfveukgehoev + " + size);
-    //             navigator.clipboard.writeText("hi");
-    //     };
-    //     window.addEventListener('click', handleClick);
-//
-    //     return () => {
-    //         window.removeEventListener('click', handleClick);
-    //     };
-    // }, []);
+    useEffect(() => {
+        const handleClick = event => {
+            if(ref.current){
+                navigator.clipboard.writeText("lander.wesenbeek@hotmail.be");
+                setCopied(1.0);
+            }
+        };
+        window.addEventListener('click', handleClick);
+
+        return () => {
+            window.removeEventListener('click', handleClick);
+        };
+    }, []);
 
     return(
         <RoundedBox
@@ -69,7 +77,7 @@ function EmailButton(){
             >
                 <meshStandardMaterial color="#0288D1" />
             </RoundedBox>
-            <Text position={[0,0,0.8]} fontSize={0.6 * size}>E-mail</Text>
+            <Text position={[0,0,0.8]} fontSize={0.6 * size}>{copied>0?"Copied" : "E-mail"}</Text>
         </RoundedBox>
     )
 }
