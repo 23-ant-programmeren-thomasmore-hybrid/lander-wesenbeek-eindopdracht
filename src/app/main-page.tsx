@@ -10,7 +10,7 @@ export default function MainPage(){
     return (
         <main>
             <NavBar/>
-            <div className="mx-auto h-screen grid">
+            <div className="mx-auto h-screen grid bg-gradient-to-r from-cyan-100 to-blue-200">
                 <Canvas>
                     <ambientLight intensity={0.75} />
                     <directionalLight color="#fff9db" position={[0, 0, 1]} />

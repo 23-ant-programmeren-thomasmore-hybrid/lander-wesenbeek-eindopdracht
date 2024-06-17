@@ -7,7 +7,7 @@ import { useRef, useState, useEffect} from "react";
 export default function MainPage(){
 
     return(
-        <main className="w-screen h-screen">
+        <main className="w-screen h-screen bg-gradient-to-r from-cyan-100 to-blue-200">
             <NavBar/>
             <Canvas className="h-max w-max">
                 <ambientLight intensity={1.95} />
