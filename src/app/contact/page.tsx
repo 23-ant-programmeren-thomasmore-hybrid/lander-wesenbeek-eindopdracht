@@ -72,7 +72,7 @@ function EmailButton(){
     useEffect(() => {
         const handleClick = event => {
             if(ref.current){
-                navigator.clipboard.writeText("lander.wesenbeek@hotmail.be");
+                navigator.clipboard.writeText("mailto:lander.wesenbeek@hotmail.be");
                 setCopied(1.0);
             }
         };
